@@ -8,7 +8,7 @@ export const publicRoutes = [
     key: 'login',
     name: 'login',
     component: Login,
-    options: {title: 'Login'},
+    options: {headerShown: false},
   },
   {
     key: 'register',

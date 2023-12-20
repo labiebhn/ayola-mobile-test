@@ -1,14 +1,16 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-import {useAppSelector} from '../../../../hooks/store';
+import {useSplash} from '../../hooks/splash';
 import {useStyles} from './styles';
 
-const Splash = () => {
+const Splash = (props: any) => {
   const styles = useStyles();
+  const {} = useSplash(props);
   return (
     <View style={styles.container}>
-      <Text>Splash</Text>
+      <Text style={styles.title}>Ayola</Text>
+      <Text style={styles.description}>Take Home Test</Text>
     </View>
   );
 };

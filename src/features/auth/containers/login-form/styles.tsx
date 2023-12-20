@@ -2,18 +2,18 @@ import {StyleSheet} from 'react-native';
 
 import {useTheme} from '@react-navigation/native';
 
+import {fonts} from '../../../../utils/fonts';
+
 export const useStyles = () => {
   const {colors} = useTheme();
   return StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: colors.container,
+      width: '100%',
     },
-    content: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: 16,
+    title: {
+      ...fonts.h2,
+      color: colors.text,
+      textAlign: 'center',
     },
   });
 };
