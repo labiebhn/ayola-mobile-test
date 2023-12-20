@@ -2,7 +2,7 @@ import {Platform} from 'react-native';
 
 export const palettes = {
   default: {
-    primary: '#f01d01',
+    primary: '#ff3a33',
     container: '#FFFFFF',
     text: '#333333',
     danger: '#E21D0F',
@@ -10,7 +10,7 @@ export const palettes = {
     border: '#DEE3ED',
   },
   dark: {
-    primary: '#f01d01',
+    primary: '#ff3a33',
     container: '#FFFFFF',
     text: '#333333',
     danger: '#E21D0F',
