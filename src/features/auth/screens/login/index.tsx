@@ -5,14 +5,16 @@ import {SafeAreaKeyboard} from '../../../../components/layouts';
 import {LoginForm} from '../../containers';
 import {useStyles} from './styles';
 
-const Login = () => {
+const Login = ({navigation}: any) => {
   const styles = useStyles();
   return (
     <View style={styles.container}>
       <SafeAreaKeyboard style={{flex: 1}} behavior={'padding'}>
-        <ScrollView contentContainerStyle={{flexGrow: 1}}>
+        <ScrollView
+          contentContainerStyle={{flexGrow: 1}}
+          keyboardShouldPersistTaps={'handled'}>
           <View style={styles.content}>
-            <LoginForm />
+            <LoginForm navigation={navigation} />
           </View>
         </ScrollView>
       </SafeAreaKeyboard>

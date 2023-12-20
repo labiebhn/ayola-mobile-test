@@ -14,7 +14,7 @@ export const publicRoutes = [
     key: 'register',
     name: 'register',
     component: Register,
-    options: {title: 'Register'},
+    options: {title: 'Daftar'},
   },
   {
     key: 'activate-account',

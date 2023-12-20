@@ -34,9 +34,11 @@ const InputTextMain: FC<InputTextMainProps> = props => {
       <View style={styles.form}>
         <TextInput
           {...props}
+          style={styles.input}
+          keyboardType={type === 'email' ? 'email-address' : 'default'}
+          autoCapitalize={type === 'email' ? 'none' : undefined}
           secureTextEntry={secure}
           onChangeText={handleChangeText}
-          style={styles.input}
         />
         {type === 'password' ? (
           <TouchableWithoutFeedback onPress={() => setSecure(!secure)}>

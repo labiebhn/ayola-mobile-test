@@ -8,6 +8,7 @@ export const useLoginForm = (props: LoginFormProps) => {
       ...INITIAL_FORM,
       label: 'Email',
       placeholder: 'Contoh: budi@example.com',
+      type: 'email',
     },
     password: {
       ...INITIAL_FORM,

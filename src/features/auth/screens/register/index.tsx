@@ -1,13 +1,23 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 
+import {SafeAreaKeyboard} from '../../../../components/layouts';
+import {RegisterForm} from '../../containers';
 import {useStyles} from './styles';
 
-const Register = () => {
+const Register = ({navigation}: any) => {
   const styles = useStyles();
   return (
     <View style={styles.container}>
-      <Text>Register</Text>
+      <SafeAreaKeyboard style={{flex: 1}} behavior={'padding'}>
+        <ScrollView
+          contentContainerStyle={{flexGrow: 1}}
+          keyboardShouldPersistTaps={'handled'}>
+          <View style={styles.content}>
+            <RegisterForm navigation={navigation} />
+          </View>
+        </ScrollView>
+      </SafeAreaKeyboard>
     </View>
   );
 };

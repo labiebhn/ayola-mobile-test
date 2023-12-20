@@ -1,4 +1,4 @@
-export type InputTextType = 'default' | 'password';
+export type InputTextType = 'default' | 'password' | 'email';
 export type InitialFormType = {
   name?: string;
   label?: string;
