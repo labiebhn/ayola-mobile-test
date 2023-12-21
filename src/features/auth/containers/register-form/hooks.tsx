@@ -1,12 +1,17 @@
+import {useEffect, useState} from 'react';
 import {Keyboard} from 'react-native';
 
 import {INITIAL_FORM} from '../../../../constants/form';
+import {useRegisterService} from '../../../../hooks/auth';
 import {isSubmitDisabled, useForm} from '../../../../hooks/form';
-import {UserDataType} from '../../../../types/user';
 import {RegisterFormProps} from './';
 
 export const useRegisterForm = (props: RegisterFormProps) => {
   const {navigation} = props;
+  const {
+    action: {verifyRegistration},
+  } = useRegisterService();
+
   const {form, setForm} = useForm({
     name: {
       ...INITIAL_FORM,
@@ -32,6 +37,11 @@ export const useRegisterForm = (props: RegisterFormProps) => {
       type: 'password',
     },
   });
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    setMessage('');
+  }, [form]);
 
   const handleSubmit = () => {
     if (isSubmitDisabled(form)) {
@@ -39,6 +49,10 @@ export const useRegisterForm = (props: RegisterFormProps) => {
     }
     Keyboard.dismiss();
     const {name, email, password} = form;
+    const userValid = verifyRegistration(email.value);
+    if (!userValid) {
+      return setMessage('Email sudah terdaftar.');
+    }
     let payload = {
       name: name.value,
       email: email.value,
@@ -47,5 +61,5 @@ export const useRegisterForm = (props: RegisterFormProps) => {
     navigation.navigate('activate-account', payload);
   };
 
-  return {form, action: {setForm, onSubmit: handleSubmit}};
+  return {form, message, action: {setForm, onSubmit: handleSubmit}};
 };

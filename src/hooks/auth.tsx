@@ -18,3 +18,15 @@ export const useLoginSerivce = () => {
 
   return {user, action: {verifyUser}};
 };
+
+export const useRegisterService = () => {
+  const userData = useAppSelector(state => state.user.data, shallowEqual);
+
+  const verifyRegistration = (email: string): boolean => {
+    const selectedUser = userData.filter(item => item.email === email)?.[0];
+    console.log({selectedUser});
+    return !Boolean(selectedUser);
+  };
+
+  return {action: {verifyRegistration}};
+};

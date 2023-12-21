@@ -15,6 +15,7 @@ const RegisterForm: FC<RegisterFormProps> = props => {
   const styles = useStyles();
   const {
     form,
+    message,
     action: {setForm, onSubmit},
   } = useRegisterForm(props);
   return (
@@ -38,6 +39,12 @@ const RegisterForm: FC<RegisterFormProps> = props => {
         {...form.password_confirm}
         onChangeText={value => setForm('password_confirm', value)}
       />
+      {message ? (
+        <>
+          <Gap height={16} />
+          <Text style={styles.message}>{message}</Text>
+        </>
+      ) : null}
       <Gap height={16} />
       <ButtonMain title={'Daftar'} onPress={onSubmit} />
     </View>
