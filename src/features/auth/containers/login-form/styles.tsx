@@ -15,5 +15,9 @@ export const useStyles = () => {
       color: colors.text,
       textAlign: 'center',
     },
+    message: {
+      ...fonts.p,
+      color: colors.danger,
+    },
   });
 };

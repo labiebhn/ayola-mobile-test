@@ -18,6 +18,7 @@ const LoginForm: FC<LoginFormProps> = props => {
   const styles = useStyles();
   const {
     form,
+    message,
     action: {setForm, onSubmit},
   } = useLoginForm(props);
   return (
@@ -33,6 +34,12 @@ const LoginForm: FC<LoginFormProps> = props => {
         {...form.password}
         onChangeText={value => setForm('password', value)}
       />
+      {message ? (
+        <>
+          <Gap height={16} />
+          <Text style={styles.message}>{message}</Text>
+        </>
+      ) : null}
       <Gap height={16} />
       <ButtonMain title={'Login'} onPress={onSubmit} />
       <Gap height={8} />

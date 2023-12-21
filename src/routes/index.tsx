@@ -24,6 +24,10 @@ const Routes = () => {
   const theme = scheme === 'dark' ? themes.dark : themes.default;
   const {colors} = theme;
   const styles = useStyles(colors);
+  const hasSplash = useAppSelector(
+    state => state.splash.hasSplash,
+    shallowEqual,
+  );
   const auth = useAppSelector(state => state.core.auth, shallowEqual);
   const routes = auth ? privateRoutes : publicRoutes;
 
@@ -35,12 +39,14 @@ const Routes = () => {
           headerTitleStyle: styles.headerTitleStyle,
           headerBackTitleVisible: false,
         }}>
-        <Stack.Screen
-          key={'splash'}
-          name={'splash'}
-          options={{headerShown: false}}
-          component={Splash}
-        />
+        {!hasSplash ? (
+          <Stack.Screen
+            key={'splash'}
+            name={'splash'}
+            options={{headerShown: false}}
+            component={Splash}
+          />
+        ) : null}
         {routes.map(route => {
           return <Stack.Screen {...route} />;
         })}
