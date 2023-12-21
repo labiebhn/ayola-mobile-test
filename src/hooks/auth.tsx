@@ -24,7 +24,6 @@ export const useRegisterService = () => {
 
   const verifyRegistration = (email: string): boolean => {
     const selectedUser = userData.filter(item => item.email === email)?.[0];
-    console.log({selectedUser});
     return !Boolean(selectedUser);
   };
 
