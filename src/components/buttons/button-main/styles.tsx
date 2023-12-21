@@ -4,7 +4,7 @@ import {useTheme} from '@react-navigation/native';
 
 import {fonts} from '../../../utils/fonts';
 
-export const useStyles = (inverse?: boolean) => {
+export const useStyles = (inverse?: boolean, disabled?: boolean) => {
   const {colors} = useTheme();
   const containerColor = inverse ? colors.container : colors.primary;
   const textColor = inverse ? colors.primary : colors.container;
@@ -16,6 +16,7 @@ export const useStyles = (inverse?: boolean) => {
       borderRadius: 4,
       borderWidth: 1,
       borderColor: colors.primary,
+      opacity: disabled ? 0.7 : 1,
     },
     title: {
       ...fonts.btn,

@@ -1,13 +1,23 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 
+import {SafeAreaKeyboard} from '../../../../components/layouts';
+import {ActivateAccountForm} from '../../containers';
 import {useStyles} from './styles';
 
-const ActivateAccount = () => {
+const ActivateAccount = ({navigation, route}: any) => {
   const styles = useStyles();
   return (
     <View style={styles.container}>
-      <Text>ActivateAccount</Text>
+      <SafeAreaKeyboard style={{flex: 1}} behavior={'padding'}>
+        <ScrollView
+          contentContainerStyle={{flexGrow: 1}}
+          keyboardShouldPersistTaps={'handled'}>
+          <View style={styles.content}>
+            <ActivateAccountForm navigation={navigation} route={route} />
+          </View>
+        </ScrollView>
+      </SafeAreaKeyboard>
     </View>
   );
 };

@@ -9,8 +9,8 @@ export interface ButtonMainProps extends TouchableNativeFeedbackProps {
 }
 
 const ButtonMain: FC<ButtonMainProps> = props => {
-  const {title, inverse} = props;
-  const styles = useStyles(inverse);
+  const {title, inverse, disabled} = props;
+  const styles = useStyles(inverse, disabled);
   return (
     <TouchableNativeFeedback {...props}>
       <View style={styles.container}>

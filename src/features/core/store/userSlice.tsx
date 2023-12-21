@@ -13,10 +13,19 @@ const initialState: UserState = {
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    setStoreUserData: (state, action) => {
+      const {payload} = action;
+      let data: UserDataType = {
+        ...payload,
+        id: state.data.length + 1,
+      };
+      state.data = [...state.data, data];
+    },
+  },
   extraReducers: builder => {},
 });
 
-export const {} = userSlice.actions;
+export const {setStoreUserData} = userSlice.actions;
 
 export default userSlice.reducer;
